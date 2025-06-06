@@ -36,11 +36,16 @@ jobs:
       - name: Run tests                        # Ejecución de pruebas unitarias
         run: npm run test
   
+      - name: Run build
+        run: npm run build
+
   deploy:
+    # if: ${{ always() }} # Ejecuta el job independientemente del resultado del job anterior, condicionales respecto al contexto
+    
     runs-on: ubuntu-latest
 
     needs: build                            # Indica que este job depende de la finalización del job build
 
     steps:
-      - name: checkout
+      - name: Init deployment
         run: echo "Deploying..."
