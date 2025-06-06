@@ -3,7 +3,7 @@ name: deploy
 on: push
 
 jobs:
-  first_job:
+  build:
     runs-on: ubuntu-latest
 
     # services: # Contenedor de docker con imagenes de los servicios que necesita el proyecto (ej: bases de datos, cache, etc.)
@@ -35,3 +35,12 @@ jobs:
 
       - name: Run tests                        # Ejecución de pruebas unitarias
         run: npm run test
+  
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build                            # Indica que este job depende de la finalización del job build
+
+    steps:
+      - name: checkout
+        run: echo "Deploying..."
