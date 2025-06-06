@@ -66,6 +66,8 @@ jobs:
         id: deploy-pages
         uses: actions/deploy-pages@v4
 
+      - name: Post deployment
+        run: echo "Deployment completed successfully!"
   # notify:
   #   runs-on: ubuntu-latest
 
@@ -81,3 +83,9 @@ jobs:
   #       with:
   #         status: ${{ job.status }} # Estado del job (success, failure, etc.)
   #         fields: workflow, job, commit, author, message # Campos a mostrar en la notificación
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ECHO TEST
+        run: echo "This is a echo test"
