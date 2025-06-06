@@ -65,3 +65,19 @@ jobs:
       - name: Deploy
         id: deploy-pages
         uses: actions/deploy-pages@v4
+
+  # notify:
+  #   runs-on: ubuntu-latest
+
+  #   needs: deploy
+
+  #   if: always() # Ejecuta este job independientemente del resultado del job deploy
+
+  #   steps:
+  #     - name: Notify to slack
+  #       uses: 8398a7/action-slack@v4
+  #       env:
+  #         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # URL del webhook de Slack para enviar notificaciones
+  #       with:
+  #         status: ${{ job.status }} # Estado del job (success, failure, etc.)
+  #         fields: workflow, job, commit, author, message # Campos a mostrar en la notificación
