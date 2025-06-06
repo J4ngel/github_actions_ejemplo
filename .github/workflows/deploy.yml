@@ -50,6 +50,18 @@ jobs:
 
     needs: build                            # Indica que este job depende de la finalización del job build
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy-pages.outputs.page_url }} # URL de la página desplegada
+
+    permissions: # Permisos que se le otorgan al job
+      pages: write # Permite escribir en el repositorio, necesario para desplegar en GitHub Pages
+      id-token: write # Permite generar un token de acceso para autenticar el despliegue
+
     steps:
       - name: Init deployment
         run: echo "Deploying..."
+
+      - name: Deploy
+        id: deploy-pages
+        uses: actions/deploy-pages@v4
