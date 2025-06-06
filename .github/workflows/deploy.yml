@@ -32,3 +32,6 @@ jobs:
       
       - name: Install dependencies            # Instalación de dependencias del proyecto
         run: npm install
+
+      - name: Run tests                        # Ejecución de pruebas unitarias
+        run: npm run test
