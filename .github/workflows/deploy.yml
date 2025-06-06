@@ -22,7 +22,13 @@ jobs:
       - name: Print secret variable
         run: echo "${{ secrets.TOKEN_SECRET}}" # Aunque el comando se ejecuta, GitHub censura el secreto
       
+      - name: checkout
+        uses: actions/checkout@v4
+
       - name: setup                            # Configuración del entorno como herramientas, lenguajes (node, python, etc.)
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+      
+      - name: Install dependencies            # Instalación de dependencias del proyecto
+        run: npm install
