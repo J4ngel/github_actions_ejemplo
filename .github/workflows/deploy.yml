@@ -42,7 +42,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: public/
+          path: public/
   deploy:
     # if: ${{ always() }} # Ejecuta el job independientemente del resultado del job anterior, condicionales respecto al contexto
     
