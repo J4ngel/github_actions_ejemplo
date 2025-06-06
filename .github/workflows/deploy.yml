@@ -6,18 +6,18 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
-    services: # Contenedor de docker con imagenes de los servicios que necesita el proyecto (ej: bases de datos, cache, etc.)
-      redis:
-        image: redis
-        ports:
-          - 6379:6379
+    # services: # Contenedor de docker con imagenes de los servicios que necesita el proyecto (ej: bases de datos, cache, etc.)
+    #   redis:
+    #     image: redis
+    #     ports:
+    #       - 6379:6379
     
     steps:
-      - name: Install redis cli
-        run: sudo apt-get update -y && sudo apt-get install redis-tools -y
+      # - name: Install redis cli
+      #   run: sudo apt-get update -y && sudo apt-get install redis-tools -y  # -y se pasa como argumento a la espera de si requiere confirmación de la instalación
 
-      - name: Test redis
-        run: redis-cli -h localhost -p 6379 ping
+      # - name: Test redis
+      #   run: redis-cli -h localhost -p 6379 ping
 
       - name: Print secret variable
         run: echo "${{ secrets.TOKEN_SECRET}}" # Aunque el comando se ejecuta, GitHub censura el secreto
@@ -26,4 +26,3 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
- 
